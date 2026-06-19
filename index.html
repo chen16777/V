@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Status</title>
+<title>Links</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -13,109 +13,146 @@
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 40px 16px;
   }
   .container {
-    width: 420px;
-    padding: 40px;
-    background: #1a1a2e;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    width: 400px;
+    max-width: 100%;
+  }
+  .profile {
+    text-align: center;
+    margin-bottom: 32px;
   }
   .avatar {
-    width: 80px; height: 80px;
+    width: 96px; height: 96px;
     border-radius: 50%;
     background: linear-gradient(135deg, #667eea, #764ba2);
     display: flex; align-items: center; justify-content: center;
-    font-size: 32px; font-weight: bold; color: white;
-    margin: 0 auto 20px;
+    font-size: 36px; font-weight: bold; color: white;
+    margin: 0 auto 16px;
+    box-shadow: 0 4px 20px rgba(102,126,234,0.4);
   }
-  h1 { text-align: center; font-size: 22px; margin-bottom: 4px; }
-  .subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 28px; }
-  .status-item {
-    display: flex; align-items: center; gap: 12px;
-    padding: 12px 16px; border-radius: 10px;
-    background: #16213e; margin-bottom: 10px; font-size: 14px;
+  .profile h1 { font-size: 20px; margin-bottom: 4px; }
+  .profile p { color: #888; font-size: 13px; }
+  .link-card {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 20px;
+    background: #1a1a2e;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    color: #e0e0e0;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid transparent;
   }
-  .status-item .icon { font-size: 18px; width: 24px; text-align: center; }
-  .status-item .label { color: #888; min-width: 60px; }
-  .status-item .value { color: #ccc; }
-  .online-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: #4ade80; display: inline-block;
-    animation: pulse 2s infinite;
+  .link-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(102,126,234,0.2);
+    border-color: #667eea;
   }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+  .link-card .icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
   }
-  .time-display {
-    text-align: center; margin-top: 24px;
-    font-size: 13px; color: #666;
-  }
-  .time-display span { color: #667eea; font-weight: 600; }
-  .music-bar {
-    display: flex; gap: 3px; align-items: flex-end;
-    height: 16px; justify-content: center; margin-top: 12px;
-  }
-  .music-bar div {
-    width: 4px; background: #667eea; border-radius: 2px;
-    animation: bounce 1s infinite;
-  }
-  .music-bar div:nth-child(1) { animation-delay: 0s; height: 8px; }
-  .music-bar div:nth-child(2) { animation-delay: 0.1s; height: 14px; }
-  .music-bar div:nth-child(3) { animation-delay: 0.2s; height: 10px; }
-  .music-bar div:nth-child(4) { animation-delay: 0.3s; height: 16px; }
-  .music-bar div:nth-child(5) { animation-delay: 0.4s; height: 12px; }
-  @keyframes bounce {
-    0%, 100% { transform: scaleY(1); }
-    50% { transform: scaleY(0.4); }
+  .link-card .text { flex: 1; }
+  .link-card .text .name { font-size: 14px; font-weight: 600; }
+  .link-card .text .desc { font-size: 12px; color: #888; margin-top: 2px; }
+  .link-card .arrow { color: #555; font-size: 16px; }
+
+  /* 各平台配色 */
+  .bg-github { background: #24292e; }
+  .bg-bilibili { background: #fb7299; }
+  .bg-weixin { background: #07c160; }
+  .bg-zhihu { background: #0066ff; }
+  .bg-twitter { background: #1da1f2; }
+  .bg-email { background: #ea4335; }
+  .bg-blog { background: #ff9800; }
+  .bg-project { background: #4caf50; }
+
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 12px;
+    color: #444;
   }
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="avatar">M</div>
-  <h1>My Status Page</h1>
-  <p class="subtitle">个人状态 · 随时可改</p>
+  <!-- 个人资料区 -->
+  <div class="profile">
+    <div class="avatar">M</div>
+    <h1>Your Name</h1>
+    <p>数据爱好者 · 终身学习者</p>
+  </div>
 
-  <div class="status-item">
-    <span class="icon"><span class="online-dot"></span></span>
-    <span class="label">在线</span>
-    <span class="value">随时可联系,爱你</span>
-  </div>
-  <div class="status-item">
-    <span class="icon">&#128187;</span>
-    <span class="label">地点</span>
-    <span class="value">Home Office</span>
-  </div>
-  <div class="status-item">
-    <span class="icon">&#128218;</span>
-    <span class="label">正在</span>
-    <span class="value">探索数据分析</span>
-  </div>
-  <div class="status-item">
-    <span class="icon">&#127912;</span>
-    <span class="label">音乐</span>
-    <span class="value">Lo-Fi Beats</span>
-  </div>
-  <div class="music-bar">
-    <div></div><div></div><div></div><div></div><div></div>
-  </div>
-  <div class="time-display">
-    当前时间 <span id="clock"></span>
-  </div>
+  <!-- 链接列表 -->
+  <a class="link-card" href="https://github.com/yourname" target="_blank">
+    <div class="icon bg-github">&#9729;</div>
+    <div class="text">
+      <div class="name">GitHub</div>
+      <div class="desc">开源项目 & 代码库</div>
+    </div>
+    <span class="arrow">&rarr;</span>
+  </a>
+
+  <a class="link-card" href="https://space.bilibili.com/yourid" target="_blank">
+    <div class="icon bg-bilibili">&#9877;</div>
+    <div class="text">
+      <div class="name">Bilibili</div>
+      <div class="desc">视频教程 & 学习笔记</div>
+    </div>
+    <span class="arrow">&rarr;</span>
+  </a>
+
+  <a class="link-card" href="https://www.zhihu.com/people/yourid" target="_blank">
+    <div class="icon bg-zhihu">&#9752;</div>
+    <div class="text">
+      <div class="name">知乎</div>
+      <div class="desc">技术文章 & 观点分享</div>
+    </div>
+    <span class="arrow">&rarr;</span>
+  </a>
+
+  <a class="link-card" href="https://twitter.com/yourid" target="_blank">
+    <div class="icon bg-twitter">&#128172;</div>
+    <div class="text">
+      <div class="name">Twitter / X</div>
+      <div class="desc">日常想法 & 行业动态</div>
+    </div>
+    <span class="arrow">&rarr;</span>
+  </a>
+
+  <a class="link-card" href="mailto:you@email.com">
+    <div class="icon bg-email">&#9993;</div>
+    <div class="text">
+      <div class="name">Email</div>
+      <div class="desc">正式合作 & 商务联系</div>
+    </div>
+    <span class="arrow">&rarr;</span>
+  </a>
+
+  <a class="link-card" href="https://yourblog.com" target="_blank">
+    <div class="icon bg-blog">&#128221;</div>
+    <div class="text">
+      <div class="name">个人博客</div>
+      <div class="desc">深度技术文章</div>
+    </div>
+    <span class="arrow">&rarr;</span>
+  </a>
+
+  <a class="link-card" href="https://yourproject.com" target="_blank">
+    <div class="icon bg-project">&#128640;</div>
+    <div class="text">
+      <div class="name">我的项目</div>
+      <div class="desc">产品 & 工具推荐</div>
+    </div>
+    <span class="arrow">&rarr;</span>
+  </a>
+
+  <div class="footer">Built with &#10084; · Cloudflare Pages</div>
 </div>
-
-<script>
-  function updateClock() {
-    const now = new Date();
-    const t = now.toLocaleTimeString('zh-CN', { hour12: false });
-    const d = now.toLocaleDateString('zh-CN', { year:'numeric', month:'long', day:'numeric', weekday:'long' });
-    document.getElementById('clock').textContent = d + ' ' + t;
-  }
-  updateClock();
-  setInterval(updateClock, 1000);
-</script>
 </body>
 </html>
